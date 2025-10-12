@@ -17,3 +17,15 @@ export async function createModule(module: Partial<ModuleEntity>): Promise<Modul
   const response = await axios.post(API_URL, module)
   return response.data
 }
+export async function getModulesByEc(ec: string): Promise<ModuleEntity[]> {
+  const response = await axios.get(`${API_URL}/ec/${ec}`)
+  return response.data
+}
+export async function getAllThemes(): Promise<string[]> {
+  const response = await axios.get(`${API_URL}/theme`)
+  return response.data
+}
+export async function getModulesByTheme(theme: string): Promise<ModuleEntity[]> {
+  const response = await axios.get(`${API_URL}/theme/${theme}`)
+  return response.data
+}

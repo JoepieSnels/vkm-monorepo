@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ModuleEntity } from '@shared/shared/Domain/entities/module.domain';
 import { ModuleRepository } from '@shared/shared/Infrastructure/repositories/module.repository';
-import { IModuleService } from '@shared/shared/Domain/services/module.service.interface';
+import { IModuleService } from '@shared/shared/DomainServices/services/module.service.interface';
 
 @Injectable()
 export class ModulesService implements IModuleService {

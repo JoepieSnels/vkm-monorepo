@@ -17,12 +17,9 @@ export class ModulesController {
 
   @Get()
   async findAll(): Promise<ModuleEntity[]> {
-    return this.modulesService.getAllModules();
-  }
-
-  @Get(':id')
-  async findOne(@Param('id') id: string): Promise<ModuleEntity | null> {
-    return this.modulesService.getModuleById(id);
+    const modules = await this.modulesService.getAllModules();
+    const sorted = modules.sort((a, b) => a.name.localeCompare(b.name));
+    return sorted;
   }
 
   @Post()
@@ -41,5 +38,15 @@ export class ModulesController {
   @Delete(':id')
   async delete(@Param('id') id: string): Promise<ModuleEntity | null> {
     return this.modulesService.deleteModule(id);
+  }
+  @Get('/theme')
+  async getAllThemes(): Promise<string[]> {
+    const modules = await this.modulesService.getAllModules();
+    const themes = Array.from(new Set(modules.map((module) => module.theme)));
+    return themes;
+  }
+  @Get(':id')
+  async findOne(@Param('id') id: string): Promise<ModuleEntity | null> {
+    return this.modulesService.getModuleById(id);
   }
 }

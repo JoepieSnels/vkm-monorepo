@@ -24,6 +24,8 @@
     "@nestjs/core": "^11.0.1",
     "@nestjs/mongoose": "^11.0.3",
     "@nestjs/platform-express": "^11.0.1",
+    "bootstrap": "^5.3.8",
+    "bootstrap-vue-3": "^0.3.12",
     "mongoose": "^8.19.1",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"

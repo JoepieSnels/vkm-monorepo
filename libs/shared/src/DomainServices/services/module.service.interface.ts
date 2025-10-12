@@ -1,4 +1,4 @@
-import { ModuleEntity } from '../entities/module.domain';
+import { ModuleEntity } from '../../Domain/entities/module.domain';
 
 export interface IModuleService {
   getAllModules(): Promise<ModuleEntity[]>;
