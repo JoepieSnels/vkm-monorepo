@@ -1,11 +1,13 @@
 // libs/shared/src/Infrastructure/schemas/module.schema.ts
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
+import { CourseDb } from './course.shema';
+import { TeacherDb } from './teacher.schema';
 
-export type ModuleDocument = ModuleEntity & Document;
+export type ModuleDocument = ModuleDb & Document;
 
 @Schema({ collection: 'modules' })
-export class ModuleEntity {
+export class ModuleDb {
   @Prop({ required: true })
   name: string;
 
@@ -15,14 +17,14 @@ export class ModuleEntity {
   @Prop({ required: true })
   nlqf: number;
 
-  @Prop({ required: true })
-  theme: string;
+  @Prop({ type: Types.ObjectId, ref: 'Course', required: true })
+  course: CourseDb; // 🔗 referentie naar Course
+
+  @Prop({ type: Types.ObjectId, ref: 'Teacher', required: true })
+  teacher: TeacherDb; // 🔗 referentie naar Teacher
 
   @Prop()
   description: string;
-
-  @Prop({ required: true })
-  type: string;
 }
 
-export const ModuleSchema = SchemaFactory.createForClass(ModuleEntity);
+export const ModuleSchema = SchemaFactory.createForClass(ModuleDb);
