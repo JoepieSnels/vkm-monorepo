@@ -96,9 +96,6 @@ const handleCreate = async () => {
       courseId: newModule.value.courseId,
       teacherId: newModule.value.teacherId,
     }
-
-    await createModule(payload)
-
     await createModule(payload)
     alert('Module created successfully!')
     window.location.href = '/'

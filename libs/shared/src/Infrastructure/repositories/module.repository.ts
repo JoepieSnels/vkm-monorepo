@@ -149,9 +149,8 @@ export class ModuleRepository implements IModuleRepository {
   }
 
   async create(data: Partial<ModuleEntity>): Promise<ModuleEntity> {
-    // Maak de module aan in MongoDB
-    const created = await this.model.create(data);
-
+    const created = new this.model(data);
+    await created.save();
     // Populeer de course en teacher zodat je er objecten van kunt maken
     const populated = await created.populate([
       'course',
