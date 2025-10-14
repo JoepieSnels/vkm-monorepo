@@ -15,8 +15,18 @@ export class ModulesService implements IModuleService {
     return this.repository.findById(id);
   }
 
-  async createModule(data: Partial<ModuleEntity>): Promise<ModuleEntity> {
-    return this.repository.create(data);
+  async createModule(data: any): Promise<ModuleEntity> {
+    // Controleer of de frontend een DTO stuurt
+    const mapped = {
+      name: data.name,
+      ec: data.ec,
+      nlqf: data.nlqf,
+      description: data.description,
+      course: data.courseId, // vertaling naar mongoose veld
+      teacher: data.teacherId, // vertaling naar mongoose veld
+    };
+
+    return this.repository.create(mapped);
   }
 
   async updateModule(

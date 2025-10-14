@@ -66,12 +66,14 @@ const modules = computed(() => {
         placeholder="Zoek op naam"
         style="max-width: 300px"
       />
+      <RouterLink to="/create-module" class="btn btn-success ms-auto">Create Module</RouterLink>
     </div>
 
     <!-- Module lijst -->
-    <div class="row g-3">
+    <TransitionGroup name="module-fade" tag="div" class="row g-3">
       <div v-for="module in modules" :key="module.id" class="col-md-6 col-lg-4">
         <div class="card shadow-sm h-100">
+          <RouterLink :to="`/modules/${module.id}`" class="stretched-link"></RouterLink>
           <div class="card-body">
             <h5 class="card-title">{{ module.name }}</h5>
             <p class="card-text">{{ module.description }}</p>
@@ -98,8 +100,31 @@ const modules = computed(() => {
           </div>
         </div>
       </div>
-
-      <div v-if="modules.length === 0" class="text-muted">Geen modules gevonden</div>
-    </div>
+    </TransitionGroup>
+    <div v-if="modules.length === 0" class="alert alert-danger">No modules found.</div>
   </div>
 </template>
+
+<style scoped>
+.card {
+  transition: transform 0.5s ease-in-out;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+.module-fade-enter-active,
+.module-fade-leave-active {
+  transition: all 0.4s ease;
+}
+
+.module-fade-enter-from,
+.module-fade-leave-to {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Zachte animatie bij herschikken */
+.module-fade-move {
+  transition: transform 0.4s ease;
+}
+</style>

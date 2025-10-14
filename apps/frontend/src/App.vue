@@ -24,21 +24,6 @@ import { RouterLink, RouterView } from 'vue-router'
             <li class="nav-item">
               <RouterLink to="/" class="nav-link" exact-active-class="active">Home</RouterLink>
             </li>
-            <li class="nav-item">
-              <RouterLink to="/modules" class="nav-link" exact-active-class="active"
-                >Modules</RouterLink
-              >
-            </li>
-            <li class="nav-item">
-              <RouterLink to="/create-module" class="nav-link" exact-active-class="active"
-                >Create Module</RouterLink
-              >
-            </li>
-            <li class="nav-item">
-              <RouterLink to="/about" class="nav-link" exact-active-class="active"
-                >About</RouterLink
-              >
-            </li>
           </ul>
         </div>
       </div>
@@ -64,6 +49,7 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
+  background-color: darkgreen;
 }
 
 .navbar {

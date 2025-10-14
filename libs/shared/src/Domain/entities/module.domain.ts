@@ -13,3 +13,13 @@ export class ModuleEntity {
     public readonly teacher: TeacherEntity | null,
   ) {}
 }
+export class CreateModuleDTO {
+  constructor(
+    public readonly name: string,
+    public readonly ec: number,
+    public readonly nlqf: number,
+    public readonly description: string,
+    public readonly courseId: string,
+    public readonly teacherId: string,
+  ) {}
+}
