@@ -96,9 +96,10 @@ const handleCreate = async () => {
       courseId: newModule.value.courseId,
       teacherId: newModule.value.teacherId,
     }
-    await createModule(payload)
+    const module = await createModule(payload)
     alert('Module created successfully!')
-    window.location.href = '/'
+
+    window.location.href = '/modules/' + module.id
   } catch (err) {
     console.error(err)
     alert('Failed to create module')
