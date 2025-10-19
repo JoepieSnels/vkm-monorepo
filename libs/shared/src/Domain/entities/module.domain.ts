@@ -1,17 +1,25 @@
+// libs/shared/src/Domain/entities/module.domain.ts
+import { CourseEntity } from './course.domain';
+import { TeacherEntity } from './teacher.domain';
+
 export class ModuleEntity {
   constructor(
     public readonly id: string,
     public readonly name: string,
     public readonly ec: number,
     public readonly nlqf: number,
-    public readonly theme: string,
     public readonly description: string,
-    public readonly type: string,
+    public readonly course: CourseEntity | null,
+    public readonly teacher: TeacherEntity | null,
   ) {}
-
-  validate() {
-    if (!this.name || this.ec <= 0) {
-      throw new Error('Invalid module data');
-    }
-  }
+}
+export class CreateModuleDTO {
+  constructor(
+    public readonly name: string,
+    public readonly ec: number,
+    public readonly nlqf: number,
+    public readonly description: string,
+    public readonly courseId: string,
+    public readonly teacherId: string,
+  ) {}
 }
