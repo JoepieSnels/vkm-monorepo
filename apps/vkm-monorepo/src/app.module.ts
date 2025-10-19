@@ -12,7 +12,9 @@ import { TeacherModule } from './teacher/teacher.module';
 @Module({
   imports: [
     // Hier maak je de databaseverbinding
-    MongooseModule.forRoot('mongodb://localhost:27017/vkm-db'),
+    MongooseModule.forRoot(
+      process.env.DATABASE_URL || 'mongodb://localhost/vkm-db',
+    ),
     ModulesModule,
     CourseModule,
     TeacherModule, // jouw modules

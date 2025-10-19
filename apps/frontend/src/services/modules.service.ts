@@ -1,7 +1,9 @@
 import axios from 'axios'
 import { ModuleEntity } from '@shared/Domain/entities/module.domain'
 
-const API_URL = 'http://localhost:3000/modules'
+const API_URL = import.meta.env.VITE_API_URL + 'modules'
+
+console.log('Modules API URL:', API_URL)
 
 export async function getModules(): Promise<ModuleEntity[]> {
   const response = await axios.get(API_URL)

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { CourseEntity } from '@shared/Domain/entities/course.domain'
 
-const API_URL = 'http://localhost:3000/course'
+const API_URL = import.meta.env.API_URL + 'courses'
 
 export async function getCourses(): Promise<CourseEntity[]> {
   const response = await axios.get(API_URL)

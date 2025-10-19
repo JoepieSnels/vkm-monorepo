@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { TeacherEntity } from '@shared/Domain/entities/teacher.domain'
 
-const API_URL = 'http://localhost:3000/teacher'
+const API_URL = import.meta.env.VITE_API_URL + 'teachers'
 
 export const getTeachers = async () => {
   const response = await axios.get(API_URL)
